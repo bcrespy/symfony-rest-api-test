@@ -17,6 +17,7 @@ class ListController extends AbstractFOSRestController
     /**
      * @Rest\Get ("/lists/{$id}", name="lists.get.id")
      * @param int $id
+     * @return string
      */
     public function getListsById (int $id)
     {

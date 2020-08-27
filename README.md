@@ -72,7 +72,28 @@ Long story short, the issue comes from the fact that [the link I ended up on the
 `$ php bin/console make:controller --no-template`
 
 
-## Routing loader of FOSRestBundler has changed
+### Routing loader of FOSRestBundler has changed
 
 The tutorial I was following gave instructions in how to define a sort of automatic routing using the `config/routes.yaml` to define generic purpose routes. It seems like over the course of the development of SOFRestBundler, they changed the logic behind how the routes are handled and now this feature is deprecated (it seems that the 'rest loader' for routes [was moved to another package](https://github.com/FriendsOfSymfony/FOSRestBundle/issues/2165)). I will therefore use the annotations approach to define my routes.
 
+
+### The Database
+
+For the database, I will be using MySQL with ORM, a nice way to have a definition of a database alongside the code for better maintenance.
+
+| Action | Command |
+| --- | --- |
+| Install ORM | `$ composer require ORM` |
+| Create an entity, in the code | `$ php bin\console make:entity` |
+| Regenerate entities based on changes within the code | `$ php bin\console make:entity --regenerate` |
+| Create the database | `$ php bin\console doctrine:database:create` |
+| Update database schema to reflect code | `$ php bin\console doctrine:schema:update` |
+
+
+
+# To check in the future
+
+
+## Migrations
+
+It seems that a better way to keep the database updated with the code in dev and in prod is to use **database migrations**. For now this project uses the shcema update method but I will check how to have some more stable stuff with migrations. [DoctrineMigrationsBundle](https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html)
