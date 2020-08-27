@@ -2,19 +2,26 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
-class ListController extends AbstractController
+class ListController extends AbstractFOSRestController
 {
     /**
-     * @Route("/list", name="list")
+     * @Rest\Get ("/lists", name="lists.get")
      */
-    public function index()
+    public function getLists ()
+    {
+    }
+
+    /**
+     * @Rest\Get ("/lists/{$id}", name="lists.get.id")
+     * @param int $id
+     */
+    public function getListsById (int $id)
     {
         return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/ListController.php',
+            "message" => `Querying list with id=`
         ]);
     }
 }
