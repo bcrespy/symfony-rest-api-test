@@ -90,6 +90,42 @@ For the database, I will be using MySQL with ORM, a nice way to have a definitio
 | Update database schema to reflect code | `$ php bin\console doctrine:schema:update` |
 
 
+### Error on database migration
+
+When getting the following error:
+
+`The metadata storage is not up to date, please run the sync-metadata-storage command to fix this issue. `
+
+It can come from the fact that the binary running the database is MariaDB and thus the version in the .env file should be given with the prefix MariaDB:
+
+`DATABASE_URL=mysql://root@127.0.0.1:3306/restfulapi?serverVersion=mariadb-10.4.13`
+
+
+### File upload
+
+When working on the file upload, I realized there is already a bundle [VichUploadBundler](https://github.com/dustin10/VichUploaderBundle) made for handling file uploads, tied to ORM entities. Since it is often the case that files are tied to database entries, I decided to go with that option which provides all the built-in tools required to handle such cases.
+
+
+### Store secrets
+
+[https://symfony.com/doc/current/configuration/secrets.html](https://symfony.com/doc/current/configuration/secrets.html)
+
+
+### JWT Authentification
+
+First, create user with `$ php bin/console make:user`
+
+Then, we can define an entry point for authentication in the `security.yaml` file.
+
+
+
+## Security
+
+* [https://symfony.com/doc/current/security.html#initial-security-yml-setup-authentication](https://symfony.com/doc/current/security.html#initial-security-yml-setup-authentication)
+* [https://ourcodeworld.com/articles/read/329/how-to-send-a-file-as-response-from-a-controller-in-symfony-3](https://ourcodeworld.com/articles/read/329/how-to-send-a-file-as-response-from-a-controller-in-symfony-3)
+* [https://symfony.com/doc/current/security/guard_authentication.html](https://symfony.com/doc/current/security/guard_authentication.html)
+
+
 
 # To check in the future
 

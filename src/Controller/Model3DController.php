@@ -29,7 +29,7 @@ class Model3DController extends AbstractFOSRestController
     }
 
     /**
-     * @Rest\Get("/models", name="models.get")
+     * @Rest\Get("/api/models", name="models.get")
      */
     public function getModels()
     {
@@ -41,7 +41,7 @@ class Model3DController extends AbstractFOSRestController
     }
 
     /**
-     * @Rest\Get("/models/{id}", name="models.get.by_id")
+     * @Rest\Get("/api/models/{id}", name="models.get.by_id")
      * @param int $id
      * @return View
      */
@@ -57,7 +57,7 @@ class Model3DController extends AbstractFOSRestController
     }
 
     /**
-     * @Rest\Post("/models", name="models.post")
+     * @Rest\Post("/api/models", name="models.post")
      * @Rest\RequestParam(
      *     name="name",
      *     description="The name of the model, will be displayed in the library",
